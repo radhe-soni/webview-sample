@@ -25,6 +25,7 @@ if [ $targetIndex -eq 0 ]; then
 else
     sudo sh -c "./xgo -out $archiveName --targets=${targets[$targetIndex]} github.com/radhe-soni/webview-sample"
     mkdir dist
+    rm "$archiveName.zip"
     find ./ -maxdepth 1 -type f -name "${archiveName}-*" | xargs -i mv {} dist/{}
     if [ "${targets[$targetIndex]}" = "windows/386" ]; then
         cp dll/x86/* dist/
